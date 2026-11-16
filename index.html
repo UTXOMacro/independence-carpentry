@@ -155,6 +155,37 @@ html{scroll-behavior:auto!important}
  .detail-after-gallery .btn{width:100%}
 }
 @media(max-width:365px){.featured-preview .featured-photo{height:325px}}
+
+/* Featured project photo carousel */
+.featured-carousel{position:relative;height:100%;width:100%}
+.featured-carousel img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 45%;opacity:0;animation:carouselFade 12s infinite}
+.featured-carousel img:nth-child(1){animation-delay:0s}
+.featured-carousel img:nth-child(2){animation-delay:4s}
+.featured-carousel img:nth-child(3){animation-delay:8s}
+@keyframes carouselFade{0%{opacity:0}5%{opacity:1}30%{opacity:1}35%{opacity:0}100%{opacity:0}}
+.featured-carousel img{transition:transform .3s}
+.featured-project-link:hover .featured-carousel img{transform:scale(1.025)}
+/* Progress dots */
+.carousel-dots{position:absolute;z-index:2;bottom:60px;left:20px;display:flex;gap:8px}
+.carousel-dots span{width:32px;height:3px;background:rgba(255,255,255,.3);animation:dotPulse 12s infinite}
+.carousel-dots span:nth-child(1){animation-delay:0s}
+.carousel-dots span:nth-child(2){animation-delay:4s}
+.carousel-dots span:nth-child(3){animation-delay:8s}
+@keyframes dotPulse{0%{background:rgba(255,255,255,.3)}5%{background:rgba(255,255,255,.9)}30%{background:rgba(255,255,255,.9)}35%{background:rgba(255,255,255,.3)}100%{background:rgba(255,255,255,.3)}}
+
+/* Reimagined services — editorial list */
+.services-list{border-top:1px solid #d4cbbe}
+.svc-row{display:grid;grid-template-columns:60px 1fr auto;align-items:baseline;gap:0 24px;padding:28px 0;border-bottom:1px solid #d4cbbe;transition:background .2s,padding .2s}
+.svc-row:hover{background:rgba(154,117,89,.04);padding-left:12px;padding-right:12px}
+.svc-num{font-size:11px;color:#b19d85;letter-spacing:.12em;font-weight:600;padding-top:4px}
+.svc-name{font:clamp(26px,3.2vw,42px) Georgia,'Times New Roman',serif;letter-spacing:-.03em;line-height:1.15;font-weight:400;transition:color .2s}
+.svc-row:hover .svc-name{color:var(--clay)}
+.svc-desc{font-size:12px;color:var(--muted);letter-spacing:.02em;max-width:240px;text-align:right;line-height:1.5;padding-top:6px}
+.services-cta{display:flex;align-items:center;justify-content:space-between;margin-top:40px;padding-top:32px;border-top:1px solid #d4cbbe}
+.services-cta-text{font:clamp(20px,2.4vw,30px) Georgia,serif;letter-spacing:-.02em;color:var(--ink);max-width:500px;line-height:1.3}
+.services-cta-text span{color:var(--clay)}
+@media(max-width:900px){.svc-row{grid-template-columns:50px 1fr;gap:0 16px}.svc-desc{display:none}}
+@media(max-width:660px){.svc-row{grid-template-columns:40px 1fr;gap:0 12px;padding:22px 0}.svc-name{font-size:clamp(22px,6vw,32px)}.services-cta{flex-direction:column;align-items:start;gap:20px}.services-cta-text{font-size:22px}}
 </style>
 </head>
 <body>
@@ -162,7 +193,7 @@ html{scroll-behavior:auto!important}
 <header>
 <div class="container head-inner">
 <a aria-label="Independence Carpentry Home" class="brand" href="#home"><span class="monogram">IC</span><span class="brand-copy"><b>INDEPENDENCE</b><small>CARPENTRY, LLC</small></span></a>
-<nav aria-label="Main navigation" class="desktop-nav"><a href="#work">Our Work</a><a href="#services">Services</a><a href="#about">About</a><a class="head-cta" href="#contact">Free Estimate ↗</a></nav>
+<nav aria-label="Main navigation" class="desktop-nav"><a href="#work">Our Work</a><a href="#services">Services</a><a href="#about">About</a><a class="head-cta" href="#contact">Free Estimate</a></nav>
 <a aria-label="Open website navigation" class="mobile-menu-open" href="#mobileNav">☰</a>
 </div><nav aria-label="Mobile navigation" class="mobile-nav mobile-nav-anchor" id="mobileNav">
 <a class="menu-close" href="#home">✕ Close Menu</a>
@@ -176,24 +207,34 @@ html{scroll-behavior:auto!important}
 <main>
 <section class="hero" id="home"><div class="container hero-grid">
 <div><div class="eyebrow">The finishing touch matters</div><h1>Crafted with <em>care.</em><br/>Finished with pride.</h1><p class="hero-desc">Beautiful interior trim, detailed millwork, built-ins, and installation. From one room to a full home, the details make all the difference.</p>
-<div class="btns"><a class="btn btn-dark" href="#work">Explore Our Work <span>↗</span></a><a class="btn btn-ghost" href="tel:+18593803915">Free Estimate <span>↗</span></a></div>
+<div class="btns"><a class="btn btn-dark" href="#work">Explore Our Work</a><a class="btn btn-ghost" href="tel:+18593803915">Free Estimate</a></div>
 </div>
-<a aria-label="Explore the Powder Bath Transformation project and before and after photos" class="hero-featured-link" href="#powder-bath-project"><div class="hero-image"><img alt="Completed powder bathroom with custom picture-frame wall molding and vanity" fetchpriority="high" id="heroImage" src="images/after-vanity.jpg"/><span class="index-num">01 / FEATURED WORK</span><div class="photo-label"><small>Residential Finish Carpentry</small><strong>See the transformation  ↗</strong></div></div></a>
+<a aria-label="Explore the Powder Bath Transformation project and before and after photos" class="hero-featured-link" href="#powder-bath-project"><div class="hero-image"><div class="featured-carousel" style="position:absolute;inset:0">
+<img alt="Completed powder bath, doorway view" fetchpriority="high" src="images/after-doorway.jpg"/>
+<img alt="Installed vanity with quartz top" src="images/after-vanity.jpg"/>
+<img alt="Wall molding and crown detail" src="images/after-molding.jpg"/>
+</div><span class="index-num">01 / FEATURED WORK</span><div class="photo-label"><small>Residential Finish Carpentry</small><strong>See the transformation</strong></div></div></a>
 </div></section>
 <div class="benefit-band"><div class="container benefit-inner"><span>Thoughtful Detail</span><i>✦</i><span>Quality Craftsmanship</span><i>✦</i><span>Free Estimates</span></div></div>
 <section class="section" id="work"><div class="container">
 <div class="section-header"><div><div class="eyebrow">A closer look</div><h2 class="section-title">Work that speaks<br/>for itself.</h2></div><p class="section-sub">Select a project to see the craftsmanship up close, including its before-and-after photographs.</p></div><a aria-label="Open Powder Bath Transformation project with before and after photo gallery" class="featured-project-link" href="#powder-bath-project">
 <div class="project-card featured-preview">
 <div class="project-photo featured-photo">
-<img alt="Finished powder bath with decorative wall trim and installed vanity" loading="lazy" src="images/after-vanity.jpg"/><div class="featured-photo-chip">01 / FEATURED PROJECT</div>
-<div class="featured-photo-foot">TAP TO EXPLORE THE FULL PROJECT <span aria-hidden="true">↗</span></div>
+<div class="featured-carousel">
+<img alt="Completed powder bath, doorway view" loading="lazy" src="images/after-doorway.jpg"/>
+<img alt="Installed vanity with quartz top and picture-frame wall molding" loading="lazy" src="images/after-vanity.jpg"/>
+<img alt="Decorative wall molding and crown detail" loading="lazy" src="images/after-molding.jpg"/>
+</div>
+<div class="featured-photo-chip">01 / FEATURED PROJECT</div>
+<div class="carousel-dots"><span></span><span></span><span></span></div>
+<div class="featured-photo-foot">TAP TO EXPLORE THE FULL PROJECT</div>
 </div>
 <div class="project-info">
 <div class="project-kicker">Residential Finish Carpentry</div>
 <h3>Powder Bath<br/>Transformation</h3>
 <p>A thoughtful transformation built around beautifully finished wall molding, carefully installed trim, and an assembled and installed vanity with a quartz top.</p>
 <div class="scope"><div class="scope-label">Independence Carpentry's work</div><div class="scope-list"><span>Wall Molding</span><span>Crown</span><span>Baseboards</span><span>Vanity Installation</span></div></div>
-<span class="featured-view-link">View Project &amp; Before / After Photos <span aria-hidden="true">↗</span></span>
+<span class="featured-view-link">View Project &amp; Before / After Photos</span>
 </div>
 </div>
 </a>
@@ -224,7 +265,7 @@ html{scroll-behavior:auto!important}
 <div aria-label="Before and after photo controls" class="project-photo-overlay" role="group">
 <label class="seg seg-before" for="phase-before">Before</label><label class="seg seg-after" for="phase-after">After</label>
 </div>
-<label class="expand" for="photo-zoom">↗ View photo</label>
+<label class="expand" for="photo-zoom">View full photo</label>
 <div class="gallery-controls-hint">SELECT BEFORE / AFTER ABOVE • CHANGE ANGLE BELOW</div></div>
 <div class="project-info"><div class="project-kicker">Project Gallery — Before &amp; After</div><h3>Three views.<br/>One transformation.</h3><p>From a simple room to a space full of detail. Traditional wall molding and crown create an architectural finish, paired with a carefully assembled and installed vanity.</p>
 <div class="scope"><div class="scope-label">Independence Carpentry's work</div><div class="scope-list"><span>Wall Trim &amp; Molding</span><span>Crown Molding</span><span>Baseboards</span><span>Vanity Assembly</span><span>Quartz Top Installation</span></div></div>
@@ -246,21 +287,26 @@ html{scroll-behavior:auto!important}
 <img alt="Enlarged: Completed powder bath showing decorative wall molding and crown" class="zoom-image image-trim-after" loading="lazy" src="images/after-molding.jpg"/></div>
 <p class="zoom-hint">Use Before / After and the angle controls after closing this view</p>
 </div>
-</div></div><div class="detail-after-gallery"><p><strong>Love the details?</strong> Independence Carpentry takes on projects of all sizes, from individual rooms to larger residential installations.</p><a class="btn btn-dark" href="tel:+18593803915">Call for a Free Estimate ↗</a></div>
+</div></div><div class="detail-after-gallery"><p><strong>Love the details?</strong> Independence Carpentry takes on projects of all sizes, from individual rooms to larger residential installations.</p><a class="btn btn-dark" href="tel:+18593803915">Call for a Free Estimate</a></div>
 </div>
 </section>
-<section class="section services" id="services"><div class="container"><div class="eyebrow">What we do</div><h2 class="section-title" style="margin-bottom:20px">Details made<br/>to last.</h2><p class="service-intro">Interior finish carpentry for homeowners and builders — from individual installations to larger residential projects.</p><div class="services-grid">
-<div class="service"><span class="service-num">01 /</span><span class="service-name">Interior Trim<br/>&amp; Baseboards</span></div>
-<div class="service"><span class="service-num">02 /</span><span class="service-name">Crown &amp;<br/>Wall Molding</span></div>
-<div class="service"><span class="service-num">03 /</span><span class="service-name">Interior Door<br/>Installation</span></div>
-<div class="service"><span class="service-num">04 /</span><span class="service-name">Custom<br/>Built-ins</span></div>
-<div class="service"><span class="service-num">05 /</span><span class="service-name">Handrails<br/>&amp; Railings</span></div>
-<div class="service"><span class="service-num">06 /</span><span class="service-name">Cabinetry &amp;<br/>Vanity Install</span></div>
-<div class="service"><span class="service-num">07 /</span><span class="service-name">Finish<br/>Carpentry</span></div>
-<div class="service"><span class="service-num">08 /</span><span class="service-name">Residential<br/>Projects</span></div>
-</div></div></section>
+<section class="section services" id="services"><div class="container">
+<div class="section-header"><div><div class="eyebrow">What we do</div><h2 class="section-title">Every line.<br/>Every joint.<br/>Every detail.</h2></div><p class="section-sub">Interior finish carpentry for homeowners and builders. From a single room to a full residential build.</p></div>
+<div class="services-list">
+<div class="svc-row"><span class="svc-num">01</span><span class="svc-name">Interior Trim &amp; Baseboards</span><span class="svc-desc">Clean lines that define a room</span></div>
+<div class="svc-row"><span class="svc-num">02</span><span class="svc-name">Crown &amp; Wall Molding</span><span class="svc-desc">Architectural character, hand-fitted</span></div>
+<div class="svc-row"><span class="svc-num">03</span><span class="svc-name">Interior Door Installation</span><span class="svc-desc">Precision-hung, properly shimmed</span></div>
+<div class="svc-row"><span class="svc-num">04</span><span class="svc-name">Custom Built-ins</span><span class="svc-desc">Shelving and storage, built to fit</span></div>
+<div class="svc-row"><span class="svc-num">05</span><span class="svc-name">Handrails &amp; Railings</span><span class="svc-desc">Safe, solid, and finished right</span></div>
+<div class="svc-row"><span class="svc-num">06</span><span class="svc-name">Cabinetry &amp; Vanity Install</span><span class="svc-desc">Assembled, leveled, and secured</span></div>
+</div>
+<div class="services-cta">
+<p class="services-cta-text">From individual installations to <span>complete residential projects</span></p>
+<a class="btn btn-dark" href="#contact">Get a Free Estimate</a>
+</div>
+</div></section>
 <section class="section" id="about"><div class="container about-grid"><div class="about-card"><div class="eyebrow">A detail-first approach</div><p class="quote">The best work doesn't need to shout. You can see it in every detail.</p></div><div class="about-copy"><div class="eyebrow">Get to know us</div><h2>Small details.<br/>Lasting impact.</h2><p>Independence Carpentry, LLC works on the kinds of interior details you notice every day: crisp trim lines, beautifully fitted doors, thoughtful built-ins, and carefully installed cabinetry.</p><p>Working with homeowners and builders, the focus is simple — deliver work worth being proud of, whether the project is a single room or a larger residential build.</p></div></div></section>
-<section class="contact" id="contact"><div class="container contact-grid"><div><div class="eyebrow">Let's talk about your project</div><h2>Have something<br/>in mind?</h2><p>From custom trim to a complete interior finish project, reach out to Mike Wells to talk through what you're looking for. Free estimates.</p><a class="contact-contact" href="tel:+18593803915">859-380-3915 ↗</a></div><div class="btns"><a class="btn btn-dark" href="tel:+18593803915">Call Mike ↗</a><a class="btn btn-ghost" href="sms:+18593803915">Send a Text ↗</a></div>
+<section class="contact" id="contact"><div class="container contact-grid"><div><div class="eyebrow">Let's talk about your project</div><h2>Have something<br/>in mind?</h2><p>From custom trim to a complete interior finish project, reach out to Mike Wells to talk through what you're looking for. Free estimates.</p><a class="contact-contact" href="tel:+18593803915">859-380-3915</a></div><div class="btns"><a class="btn btn-dark" href="tel:+18593803915">Call Mike</a><a class="btn btn-ghost" href="sms:+18593803915">Send a Text</a></div>
 <div style="margin-top:40px;max-width:480px">
 <p style="font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:#cfb59a;margin-bottom:16px">Or send a message</p>
 <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
@@ -278,7 +324,7 @@ html{scroll-behavior:auto!important}
 <div style="margin-bottom:14px">
 <textarea name="message" placeholder="Tell us about your project" rows="3" style="width:100%;padding:14px 12px;border:1px solid #6b6359;background:rgba(255,255,255,.08);color:#fbf7ef;font-size:15px;border-radius:0;resize:vertical"></textarea>
 </div>
-<button type="submit" class="btn btn-dark" style="width:100%;border-color:#d0c0ad;background:#f5efe6;color:#272521">Send Message ↗</button>
+<button type="submit" class="btn btn-dark" style="width:100%;border-color:#d0c0ad;background:#f5efe6;color:#272521">Send Message</button>
 </form>
 </div>
 </div></div></section>
