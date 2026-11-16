@@ -173,6 +173,33 @@ html{scroll-behavior:auto!important}
 .carousel-dots span:nth-child(3){animation-delay:8s}
 @keyframes dotPulse{0%{background:rgba(255,255,255,.3)}5%{background:rgba(255,255,255,.9)}30%{background:rgba(255,255,255,.9)}35%{background:rgba(255,255,255,.3)}100%{background:rgba(255,255,255,.3)}}
 
+/* Testimonials */
+.testimonials{background:#3d3933;color:#f5efe4;padding:88px 0}
+.testimonials .section-title{color:#f5efe4}
+.testimonials .eyebrow{color:#cfb59a}
+.testimonials .eyebrow:before{background:#cfb59a}
+.test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:40px}
+.test-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);padding:32px 28px;display:flex;flex-direction:column;justify-content:space-between;min-height:220px}
+.test-quote{font:clamp(17px,1.8vw,20px) Georgia,serif;line-height:1.55;color:#ede5da;margin:0 0 24px;font-style:italic}
+.test-quote::before{content:'\201C';font-size:42px;line-height:0;vertical-align:-.35em;color:#9a7559;margin-right:4px}
+.test-attr{display:flex;align-items:center;gap:12px;border-top:1px solid rgba(255,255,255,.1);padding-top:18px}
+.test-avatar{width:36px;height:36px;background:#5a534a;display:grid;place-items:center;font:14px Georgia,serif;color:#d4c5b2;flex-shrink:0}
+.test-name{font-size:13px;font-weight:700;letter-spacing:.04em}
+.test-role{font-size:11px;color:#a69d93;margin-top:2px}
+.test-placeholder{text-align:center;padding:24px;font-size:13px;color:#a69d93;border:1px dashed rgba(255,255,255,.12);margin-top:24px;line-height:1.6}
+@media(max-width:900px){.test-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:660px){.testimonials{padding:68px 0}.test-grid{grid-template-columns:1fr;gap:16px}.test-card{padding:24px 20px;min-height:auto}}
+
+/* Service area */
+.area-band{background:#e9e1d6;border-top:1px solid #ded4c6;border-bottom:1px solid #ded4c6;padding:48px 0}
+.area-inner{display:flex;align-items:start;gap:48px;justify-content:space-between}
+.area-inner .eyebrow{flex-shrink:0;padding-top:4px}
+.area-title{font:clamp(22px,2.6vw,30px) Georgia,serif;letter-spacing:-.02em;margin:0 0 16px}
+.area-cities{display:flex;flex-wrap:wrap;gap:10px}
+.area-cities span{background:rgba(255,255,255,.6);border:1px solid #d1c6b6;padding:8px 14px;font-size:12px;color:#514b43;letter-spacing:.03em}
+.area-note{font-size:12px;color:var(--muted);margin-top:14px;line-height:1.6}
+@media(max-width:660px){.area-band{padding:36px 0}.area-inner{flex-direction:column;gap:16px}.area-cities span{font-size:11px;padding:7px 11px}}
+
 /* Reimagined services — editorial list */
 .services-list{border-top:1px solid #d4cbbe}
 .svc-row{display:grid;grid-template-columns:60px 1fr auto;align-items:baseline;gap:0 24px;padding:28px 0;border-bottom:1px solid #d4cbbe;transition:background .2s,padding .2s}
@@ -193,14 +220,16 @@ html{scroll-behavior:auto!important}
 <header>
 <div class="container head-inner">
 <a aria-label="Independence Carpentry Home" class="brand" href="#home"><span class="monogram">IC</span><span class="brand-copy"><b>INDEPENDENCE</b><small>CARPENTRY, LLC</small></span></a>
-<nav aria-label="Main navigation" class="desktop-nav"><a href="#work">Our Work</a><a href="#services">Services</a><a href="#about">About</a><a class="head-cta" href="#contact">Free Estimate</a></nav>
+<nav aria-label="Main navigation" class="desktop-nav"><a href="#work">Our Work</a><a href="#services">Services</a><a href="#testimonials">Testimonials</a><a href="#about">About</a><a class="head-cta" href="#contact">Free Estimate</a></nav>
 <a aria-label="Open website navigation" class="mobile-menu-open" href="#mobileNav">☰</a>
 </div><nav aria-label="Mobile navigation" class="mobile-nav mobile-nav-anchor" id="mobileNav">
 <a class="menu-close" href="#home">✕ Close Menu</a>
 <a href="#work">Our Work</a>
 <a href="#powder-bath-project">Powder Bath Project</a>
 <a href="#services">Services</a>
+<a href="#testimonials">Testimonials</a>
 <a href="#about">Our Approach</a>
+<a href="#area">Service Area</a>
 <a href="#contact">Contact / Free Estimate</a>
 </nav>
 </header>
@@ -305,8 +334,55 @@ html{scroll-behavior:auto!important}
 <a class="btn btn-dark" href="#contact">Get a Free Estimate</a>
 </div>
 </div></section>
+<section class="section testimonials" id="testimonials"><div class="container">
+<div class="eyebrow">What our clients say</div>
+<h2 class="section-title">Built on trust.<br/>Backed by results.</h2>
+<div class="test-grid">
+<div class="test-card">
+<p class="test-quote">They did an unbelievable job on our powder bath and crushed it on the door installation. They clearly know what they are doing and are great at what they do.</p>
+<div class="test-attr"><span class="test-avatar">LH</span><div><div class="test-name">Lance H.</div><div class="test-role">Homeowner, Northern Kentucky</div></div></div>
+</div>
+<div class="test-card">
+<p class="test-quote">Placeholder for client testimonial. Mike's craftsmanship and attention to detail exceeded our expectations on every level.</p>
+<div class="test-attr"><span class="test-avatar">?</span><div><div class="test-name">Client Name</div><div class="test-role">Project type, Location</div></div></div>
+</div>
+<div class="test-card">
+<p class="test-quote">Placeholder for client testimonial. Professional, on time, and the finished product speaks for itself. Highly recommend.</p>
+<div class="test-attr"><span class="test-avatar">?</span><div><div class="test-name">Client Name</div><div class="test-role">Project type, Location</div></div></div>
+</div>
+</div>
+<p class="test-placeholder">Have you worked with Independence Carpentry? We'd love to feature your experience here.<br/>Contact us to share your testimonial.</p>
+</div></section>
+
 <section class="section" id="about"><div class="container about-grid"><div class="about-card"><div class="eyebrow">A detail-first approach</div><p class="quote">The best work doesn't need to shout. You can see it in every detail.</p></div><div class="about-copy"><div class="eyebrow">Get to know us</div><h2>Small details.<br/>Lasting impact.</h2><p>Independence Carpentry, LLC works on the kinds of interior details you notice every day: crisp trim lines, beautifully fitted doors, thoughtful built-ins, and carefully installed cabinetry.</p><p>Working with homeowners and builders, the focus is simple — deliver work worth being proud of, whether the project is a single room or a larger residential build.</p></div></div></section>
-<section class="contact" id="contact"><div class="container contact-grid"><div><div class="eyebrow">Let's talk about your project</div><h2>Have something<br/>in mind?</h2><p>From custom trim to a complete interior finish project, reach out to Mike Wells to talk through what you're looking for. Free estimates.</p><a class="contact-contact" href="tel:+18593803915">859-380-3915</a></div><div class="btns"><a class="btn btn-dark" href="tel:+18593803915">Call Mike</a><a class="btn btn-ghost" href="sms:+18593803915">Send a Text</a></div>
+<div class="area-band" id="area"><div class="container">
+<div class="area-inner">
+<div>
+<div class="eyebrow">Where we work</div>
+<h3 class="area-title">Proudly serving Northern Kentucky<br/>and the Greater Cincinnati area</h3>
+<div class="area-cities">
+<span>Independence</span>
+<span>Florence</span>
+<span>Covington</span>
+<span>Erlanger</span>
+<span>Burlington</span>
+<span>Fort Mitchell</span>
+<span>Edgewood</span>
+<span>Cold Spring</span>
+<span>Highland Heights</span>
+<span>Newport</span>
+<span>Fort Thomas</span>
+<span>Union</span>
+<span>Hebron</span>
+<span>Crestview Hills</span>
+</div>
+<p class="area-note">Also serving Boone, Kenton, and Campbell counties. Projects outside this area considered on a case-by-case basis.</p>
+</div>
+</div>
+</div></div>
+
+<section class="contact" id="contact"><div class="container contact-grid"><div><div class="eyebrow">Let's talk about your project</div><h2>Have something<br/>in mind?</h2><p>From custom trim to a complete interior finish project, reach out to Mike Wells to talk through what you're looking for. Free estimates.</p><a class="contact-contact" href="tel:+18593803915">859-380-3915</a>
+<a class="contact-contact" href="mailto:mike@independencecarpentry.com" style="font-size:18px;display:block;margin-top:8px;color:#d0c7bd">mike@independencecarpentry.com</a></div><div class="btns"><a class="btn btn-dark" href="tel:+18593803915">Call Mike</a><a class="btn btn-ghost" href="sms:+18593803915">Send a Text</a></div>
 <div style="margin-top:40px;max-width:480px">
 <p style="font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:#cfb59a;margin-bottom:16px">Or send a message</p>
 <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
