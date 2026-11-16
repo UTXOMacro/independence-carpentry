@@ -213,6 +213,7 @@ html{scroll-behavior:auto!important}
 .services-cta-text span{color:var(--clay)}
 @media(max-width:900px){.svc-row{grid-template-columns:50px 1fr;gap:0 16px}.svc-desc{display:none}}
 @media(max-width:660px){.svc-row{grid-template-columns:40px 1fr;gap:0 12px;padding:22px 0}.svc-name{font-size:clamp(22px,6vw,32px)}.services-cta{flex-direction:column;align-items:start;gap:20px}.services-cta-text{font-size:22px}}
+.nav-active{background:rgba(154,117,89,.09);border-radius:2px}
 </style>
 </head>
 <body>
@@ -225,7 +226,6 @@ html{scroll-behavior:auto!important}
 </div><nav aria-label="Mobile navigation" class="mobile-nav mobile-nav-anchor" id="mobileNav">
 <a class="menu-close" href="#home">✕ Close Menu</a>
 <a href="#work">Our Work</a>
-<a href="#powder-bath-project">Powder Bath Project</a>
 <a href="#services">Services</a>
 <a href="#testimonials">Testimonials</a>
 <a href="#about">Our Approach</a>
@@ -406,4 +406,25 @@ html{scroll-behavior:auto!important}
 </div></div></section>
 </main>
 <footer><div class="container foot-inner"><div><b>INDEPENDENCE CARPENTRY, LLC</b><div class="footer-note">© 2026 Independence Carpentry, LLC. All rights reserved.</div></div></div></footer>
+<script>
+(function(){
+var nav=document.querySelector('.desktop-nav');
+if(!nav)return;
+var links=[].slice.call(nav.querySelectorAll('a[href^="#"]'));
+var sections=[];
+links.forEach(function(a){var id=a.getAttribute('href').slice(1);var el=document.getElementById(id);if(el)sections.push({el:el,a:a})});
+var active=null;
+function update(){
+var st=window.scrollY+140;
+var cur=null;
+for(var i=sections.length-1;i>=0;i--){if(sections[i].el.offsetTop<=st){cur=sections[i].a;break}}
+if(cur!==active){
+if(active)active.classList.remove('nav-active');
+if(cur&&!cur.classList.contains('head-cta'))cur.classList.add('nav-active');
+active=cur}}
+var ticking=false;
+window.addEventListener('scroll',function(){if(!ticking){requestAnimationFrame(function(){update();ticking=false});ticking=true}});
+update();
+})();
+</script>
 </body></html>
